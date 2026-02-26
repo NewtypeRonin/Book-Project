@@ -2,6 +2,8 @@
 Kanji Counter Project - Book Object
 This module contains the Book class for tracking JLPT level kanji/vocab counts.
 """
+from PYPDF2 import PdfReader  # For PDF parsing
+import json  # For loading the kanji database
 
 
 class Book:
@@ -36,41 +38,43 @@ class Book:
         self.n1_value = 0
     
     # ============ GETTER METHODS ============
-    # TODO: Implement getter for N5 value
-    # Instructions: Create a method called get_n5() that returns self.n5_value
+    def get_n5(self):
+        return self.n5_value
     
-    # TODO: Implement getter for N4 value
-    # Instructions: Create a method called get_n4() that returns self.n4_value
+    def get_n4(self):
+        return self.n4_value
+
+    def get_n3(self):
+        return self.n3_value
     
-    # TODO: Implement getter for N3 value
-    # Instructions: Create a method called get_n3() that returns self.n3_value
+    def get_n2(self):
+        return self.n2_value
     
-    # TODO: Implement getter for N2 value
-    # Instructions: Create a method called get_n2() that returns self.n2_value
-    
-    # TODO: Implement getter for N1 value
-    # Instructions: Create a method called get_n1() that returns self.n1_value
+    def get_n1(self):
+        return self.n1_value
     
     # ============ SETTER METHODS ============
-    # TODO: Implement setter for N5 value
-    # Instructions: Create a method called set_n5(value) that sets self.n5_value to the given value
+    def set_n5(self, value):
+        self.n5_value = value
     
-    # TODO: Implement setter for N4 value
-    # Instructions: Create a method called set_n4(value) that sets self.n4_value to the given value
+    def set_n4(self, value):
+        self.n4_value = value
     
-    # TODO: Implement setter for N3 value
-    # Instructions: Create a method called set_n3(value) that sets self.n3_value to the given value
+    def set_n3(self, value):
+        self.n3_value = value
     
-    # TODO: Implement setter for N2 value
-    # Instructions: Create a method called set_n2(value) that sets self.n2_value to the given value
+    def set_n2(self, value):
+        self.n2_value = value
     
-    # TODO: Implement setter for N1 value
-    # Instructions: Create a method called set_n1(value) that sets self.n1_value to the given value
+    def set_n1(self, value):
+        self.n1_value = value
     
     # ============ UTILITY METHODS ============
     # TODO: Implement total_values() method
     # Instructions: Create a method that returns the sum of all kanji/vocab counts
     # (n5_value + n4_value + n3_value + n2_value + n1_value)
+    def total_values(self):
+        return self.n5_value + self.n4_value + self.n3_value + self.n2_value + self.n1_value
     
     # TODO: Implement print_values() method
     # Instructions: Create a method that prints the book information in a readable format
@@ -83,6 +87,15 @@ class Book:
     #   N2: [count]
     #   N1: [count]
     #   Total: [total count]
+    def print_values(self):
+        print(f"Title: {self.title}")
+        print(f"ISBN: {self.isbn}")
+        print(f"N5: {self.n5_value}")
+        print(f"N4: {self.n4_value}")
+        print(f"N3: {self.n3_value}")
+        print(f"N2: {self.n2_value}")
+        print(f"N1: {self.n1_value}")
+        print(f"Total: {self.total_values()}")
 
 
 def main():
@@ -93,6 +106,12 @@ def main():
     Instructions: Use a PDF parsing library (PyPDF2 or pdfplumber recommended)
     to read the PDF file and extract text content.
     Reference: You'll need to specify the path to the PDF file to scan.
+    reader = PdfReader("path_to_your_book.pdf")
+    #number of pages = len(reader.pages)
+    #for page in reader.pages:
+    #    text = page.extract_text()
+    #    # Process the text to extract kanji/vocab
+    
     
     TODO: Step 2 - Parse the extracted text
     Instructions: Extract kanji and vocabulary from the text.
