@@ -2,7 +2,7 @@
 Kanji Counter Project - Book Object
 This module contains the Book class for tracking JLPT level kanji/vocab counts.
 """
-from PYPDF2 import PdfReader  # For PDF parsing
+from PyPDF2 import PdfReader  # For PDF parsing
 import json  # For loading the kanji database
 
 
@@ -106,13 +106,15 @@ def main():
     Instructions: Use a PDF parsing library (PyPDF2 or pdfplumber recommended)
     to read the PDF file and extract text content.
     Reference: You'll need to specify the path to the PDF file to scan.
-    reader = PdfReader("path_to_your_book.pdf")
+    """
+    reader = PdfReader("data\Genki I compressed.pdf")
     #number of pages = len(reader.pages)
-    #for page in reader.pages:
-    #    text = page.extract_text()
-    #    # Process the text to extract kanji/vocab
-    
-    
+    for page in reader.pages:
+        text = page.extract_text()
+        # Process the text to extract kanji/vocab
+    if text and len(text.strip()) > 0:
+        print("PDF read successfully!" )
+    """
     TODO: Step 2 - Parse the extracted text
     Instructions: Extract kanji and vocabulary from the text.
     Consider using a Japanese text analysis library like MeCab or Janome.
