@@ -107,18 +107,21 @@ def main():
     to read the PDF file and extract text content.
     Reference: You'll need to specify the path to the PDF file to scan.
     """
-    reader = PdfReader("data\Genki I compressed.pdf")
+    #reader = PdfReader("data\Genki I compressed.pdf")
+    reader = PdfReader("data\Kanji_test.pdf")
     #number of pages = len(reader.pages)
     for page in reader.pages:
         text = page.extract_text()
         # Process the text to extract kanji/vocab
-    if text and len(text.strip()) > 0:
-        print("PDF read successfully!" )
+        print(text)
     """
     TODO: Step 2 - Parse the extracted text
     Instructions: Extract kanji and vocabulary from the text.
     Consider using a Japanese text analysis library like MeCab or Janome.
-    
+    """
+
+
+    """
     TODO: Step 3 - Load the kanji database
     Instructions: Load your provided kanji/vocab database (likely the JSON file in data/)
     Verify what format the database uses (mappings of kanji to JLPT levels).

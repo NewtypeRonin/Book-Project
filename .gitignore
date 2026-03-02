@@ -1,1 +1,4 @@
 .bookenv/
+bookenv/
+.venv/
+venv/
