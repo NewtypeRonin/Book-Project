@@ -4,6 +4,8 @@ This module contains the Book class for tracking JLPT level kanji/vocab counts.
 """
 from PyPDF2 import PdfReader  # For PDF parsing
 import json  # For loading the kanji database
+from janome.tokenizer import Tokenizer  # For Japanese text analysis
+import sqlite3  # For database operations (if needed)
 
 
 class Book:
@@ -119,13 +121,20 @@ def main():
     Instructions: Extract kanji and vocabulary from the text.
     Consider using a Japanese text analysis library like MeCab or Janome.
     """
-
+    #initialize the tokenizer
+    t = Tokenizer()
+    #Parse the raw pdf data and extract the kanji/vocab
+    for token in t.tokenize(text):
+        print(token.surface)  # Print the surface form of each token
 
     """
     TODO: Step 3 - Load the kanji database
     Instructions: Load your provided kanji/vocab database (likely the JSON file in data/)
     Verify what format the database uses (mappings of kanji to JLPT levels).
+    """
     
+
+    """
     TODO: Step 4 - Match and count kanji/vocab
     Instructions: Iterate through extracted kanji/vocab and match them against
     the database to determine their JLPT levels (N1-N5).
